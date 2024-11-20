@@ -8,7 +8,6 @@
 Es una página web orientada a una tienda en línea (en proceso)
 
 ## Funcionalidades
-- Navegador
 
   - Lectura de Array en JavaScript para productos: Permite cargar dinámicamente los productos disponibles en la tienda a través de un array, facilitando la actualización y mantenimiento de la lista de productos.
   - Uso del DOM: Implementación de manipulación del DOM para actualizar de manera interactiva el contenido de la página, como la visualización de productos y detalles, sin necesidad de recargar la página.
