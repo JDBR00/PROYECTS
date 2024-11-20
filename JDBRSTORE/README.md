@@ -17,7 +17,7 @@ Es una página web orientada a una tienda en línea (en proceso)
 
 ## Uso
 
-Para usar la calculadora, ejecuta el script `Calculadora.py` en la terminal. Se presentará un menú de opciones y podrás seleccionar la operación que deseas realizar.
+Clona el repositorio con el comando git clone URL_DEL_REPOSITORIO, luego navega a la carpeta del proyecto. Para ejecutar el archivo HTML en la web, puedes usar Live Server en Visual Studio Code. En Visual Studio Code, haz clic derecho sobre el archivo HTML y selecciona "Open with Live Server".
 
 
 ## Autor
