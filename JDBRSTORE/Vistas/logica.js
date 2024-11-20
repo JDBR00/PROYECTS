@@ -41,6 +41,10 @@ let Credencailes = [
     {
         username: "Angel",
         password: "1234567"
+    },
+    {
+        username: "Taylor",
+        password: "12w34567"
     }
 ];
 
