@@ -6,7 +6,6 @@ let productos = [
         categoria: "Juguetes",
         descuento: 10,
         imagen: "https://i.ytimg.com/vi/GyY0OxDk5lI/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCN4Iwa4vko930i1sIKfyGsTHVIew"
-
     },
     { 
         nombre: "Camisa", 
@@ -33,6 +32,7 @@ let productos = [
         imagen:"https://static.dafiti.com.co/p/converse-2367-9310091-1-zoom.jpg" 
     }
 ];
+
 let Credencailes = [
     {
         username: "JDBR00",
@@ -60,8 +60,6 @@ function cargarProductos() {
         const price = document.createElement('h5');
         price.textContent = `Price: $${producto.precio}`;
 
-        
-
         const desc = document.createElement('h5');
         desc.textContent = `Descuento: $${producto.descuento}`;
 
@@ -71,13 +69,9 @@ function cargarProductos() {
             desc.style.color = "red";
         }
 
-    
         const pf = document.createElement('h5');
         var pfo = producto.precio - (producto.precio * producto.descuento / 100);
-
         pf.textContent = `Precio final: $${pfo}`;
-
-
         
         const units = document.createElement('h5');
         units.textContent = `Units: ${producto.cantidad}`;
@@ -85,31 +79,44 @@ function cargarProductos() {
         const addButton = document.createElement('button');
         addButton.textContent = "Add to cart";
         addButton.onclick = function() {
-            producto.cantidad = producto.cantidad-1;
-            
+            producto.cantidad = producto.cantidad - 1;
             units.textContent = `Units: ${producto.cantidad}`;
-        
-            
         };
-
 
         productInfoDiv.appendChild(name);
         productInfoDiv.appendChild(price);
         productInfoDiv.appendChild(units);
-        productInfoDiv.appendChild(desc)
-        productInfoDiv.appendChild(pf)
+        productInfoDiv.appendChild(desc);
+        productInfoDiv.appendChild(pf);
         productInfoDiv.appendChild(addButton);
-
 
         productDiv.appendChild(img);
         productDiv.appendChild(productInfoDiv);
-    
-
         contenedorProductos.appendChild(productDiv);
+
     });
 }
 
-
 window.onload = cargarProductos;
 
+const inputField = document.getElementById('userInput');
+const inputpass = document.getElementById('userpass');
+const saveButton = document.getElementById('saveButton');
 
+saveButton.addEventListener('click', () => {
+    const inputValue = inputField.value;
+    const inputValues = inputpass.value;
+
+    if(inputValue === Credencailes[0].username) {
+        if(inputValues === Credencailes[0].password) {
+            alert('PERMITIDO');
+        } else {
+            alert('password incorrecto');   
+        }
+    } else {
+        alert('username incorrecto');
+    }
+
+    console.log('Dato guardado:', inputValue);
+    console.log('Dato guardado:', inputValues);
+});
