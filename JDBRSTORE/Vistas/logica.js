@@ -36,8 +36,20 @@ let productos = [
 let Credencailes = [
     {
         username: "JDBR00",
+        firstname: "juan",
         password: "123456"
+    },
+    {
+        username: "Angel",
+        firstname: "A",
+        password: "1"
+    },
+    {
+        username: "Taylor",
+        firstname: "L",
+        password: "2"
     }
+
 ];
 
 function cargarProductos() {
@@ -110,6 +122,7 @@ saveButton.addEventListener('click', () => {
     if(inputValue === Credencailes[0].username) {
         if(inputValues === Credencailes[0].password) {
             alert('PERMITIDO');
+            window.open("index.html");
         } else {
             alert('password incorrecto');   
         }
