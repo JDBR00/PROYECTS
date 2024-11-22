@@ -33,25 +33,6 @@ let productos = [
     }
 ];
 
-let Credencailes = [
-    {
-        username: "JDBR00",
-        firstname: "juan",
-        password: "123456"
-    },
-    {
-        username: "Angel",
-        firstname: "A",
-        password: "1"
-    },
-    {
-        username: "Taylor",
-        firstname: "L",
-        password: "2"
-    }
-
-];
-
 function cargarProductos() {
     const contenedorProductos = document.getElementById("gol"); 
 
@@ -111,6 +92,29 @@ function cargarProductos() {
 
 window.onload = cargarProductos;
 
+
+
+
+let Credencailes = [
+    {
+        username: "JDBR00",
+        firstname: "juan",
+        password: "0"
+    },
+    {
+        username: "Angel",
+        firstname: "A",
+        password: "1"
+    },
+    {
+        username: "Taylor",
+        firstname: "L",
+        password: "2"
+    }
+
+];
+
+
 const inputField = document.getElementById('userInput');
 const inputpass = document.getElementById('userpass');
 const saveButton = document.getElementById('saveButton');
@@ -119,17 +123,18 @@ saveButton.addEventListener('click', () => {
     const inputValue = inputField.value;
     const inputValues = inputpass.value;
 
-    if(inputValue === Credencailes[0].username) {
-        if(inputValues === Credencailes[0].password) {
-            alert('PERMITIDO');
-            window.open("index.html");
-        } else {
-            alert('password incorrecto');   
-        }
+    let validUser = Credencailes.some(
+        cred => cred.username === inputValue && cred.password === inputValues
+    );
+
+    if (validUser) {
+        alert('acces permitted');
+      
     } else {
-        alert('username incorrecto');
+        alert('User or password incorret');
     }
 
     console.log('Dato guardado:', inputValue);
     console.log('Dato guardado:', inputValues);
 });
+
