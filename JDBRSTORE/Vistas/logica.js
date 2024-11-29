@@ -33,7 +33,7 @@ let productos = [
     }
 ];
 
-let Credencailes = [
+let Credenciales = [
     {
         username: "JDBR00",
         password: "123456"
