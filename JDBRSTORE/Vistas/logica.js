@@ -33,6 +33,13 @@ let productos = [
     }
 ];
 
+let Credencailes = [
+    {
+        username: "JDBR00",
+        password: "123456"
+    }
+];
+
 function cargarProductos() {
     const contenedorProductos = document.getElementById("gol"); 
 
