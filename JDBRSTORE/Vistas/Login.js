@@ -27,7 +27,6 @@ let Credencailes = [
     }
 ];
 
-
 const inputField = document.getElementById('userInput');
 const inputpass = document.getElementById('userpass');
 const saveButton = document.getElementById('saveButton');
@@ -47,7 +46,6 @@ saveButton.addEventListener('click', () => {
         const firstname = user ? user.firstname : "";
         const Rol = user ? user.Rol : "";
 
-
         const baseURLAdmmin = "IndexAdmin.html";
         const baseURLGuest = "IndexGuest.html";
         const baseURLUser = "IndexUser.html";
@@ -60,7 +58,6 @@ saveButton.addEventListener('click', () => {
                 Rol: Rol
             };
 
-
         const params = {
             credentials: JSON.stringify(credentials)
         };
@@ -68,7 +65,6 @@ saveButton.addEventListener('click', () => {
         const fullURLA = `${baseURLAdmmin}?${new URLSearchParams(params)}`;
         const fullURLG = `${baseURLGuest}?${new URLSearchParams(params)}`;
         const fullURLU = `${baseURLUser}?${new URLSearchParams(params)}`;
-
 
         if (Rol == ROLES.ADMIN) {
             console.log(fullURLA);
@@ -83,8 +79,6 @@ saveButton.addEventListener('click', () => {
             console.log("Rol desconocido");
         }
         
-
-        
     } else {
         alert('User or password incorret');
     }
@@ -92,8 +86,6 @@ saveButton.addEventListener('click', () => {
     console.log('Dato guardado:', inputValue);
     console.log('Dato guardado:', inputValues);
 });
-
-
 
 function getURLParameter(firstname) {
     const urlParams = new URLSearchParams(window.location.search);

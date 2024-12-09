@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Producto</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="Forms.css">
 </head>
 <body>
     <nav>
@@ -23,7 +23,7 @@
     </nav>
     <div class="form-container">
         <h1>Formulario de Producto</h1>
-        <form action="#" method="POST" enctype="multipart/form-data">
+        <form>
             <div class="form-group">
                 <label for="nombre">Nombre:</label>
                 <input type="text" id="nombre" name="nombre" required>
@@ -56,11 +56,14 @@
 
             <div class="form-group">
                 <label for="imagen">Imagen del Producto:</label>
-                <input type="file" id="imagen" name="imagen" accept="image/*" required>
+                <input type="text" id="imagen" name="imagen" accept="image/*" required>
             </div>
 
-            <button type="submit">Enviar</button>
+            <button id="ButtomForms" type="submit">Enviar</button>
         </form>
     </div>
 </body>
+<script src="Productos.js"></script>
+<script src="Foms.js"></script>
+
 </html>
