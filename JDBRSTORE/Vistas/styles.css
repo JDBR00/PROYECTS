@@ -1,0 +1,109 @@
+/*Estilo para barra de navegacion*/
+nav {
+    background-color: #333;
+    overflow: hidden;
+    position: fixed; 
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px; 
+    z-index: 10; 
+}
+
+#CrateElemet{
+    background-color: #00ff08;
+    border: 1px solid #000000;
+
+    border-radius: 8px;
+}
+#name a { 
+    text-decoration: none;
+    color: white;
+    font-size: 25px;
+}
+
+/*Estilo para barra de enlaces*/
+#mylist {
+    display: flex; 
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#mylist li {
+    margin: 0 10px;
+}
+
+#mylist li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 10px 15px;
+    text-decoration: none;
+}
+
+#mylist li a:hover {
+    background-color: #575757; 
+}
+
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.form-container {
+    margin-top: 200px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+input[type="text"], input[type="number"], select, input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+

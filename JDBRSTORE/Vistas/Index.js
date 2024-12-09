@@ -30,15 +30,11 @@ let productos = [
         categoria: "Calzado",
         descuento: 1,
         imagen:"https://static.dafiti.com.co/p/converse-2367-9310091-1-zoom.jpg" 
-    }
+    },
+
 ];
 
-let Credenciales = [
-    {
-        username: "JDBR00",
-        password: "123456"
-    }
-];
+
 
 function cargarProductos() {
     const contenedorProductos = document.getElementById("gol"); 

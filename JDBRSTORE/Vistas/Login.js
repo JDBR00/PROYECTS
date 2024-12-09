@@ -1,7 +1,7 @@
 let ROLES = {
-    ADMIN: 'admin',
-    USER: 'user',
-    GUEST: 'guest'
+    ADMIN: 'Admin',
+    USER: 'User',
+    GUEST: 'Guest'
 };
 
 let Credencailes = [
@@ -48,7 +48,9 @@ saveButton.addEventListener('click', () => {
         const Rol = user ? user.Rol : "";
 
 
-        const baseURL = "http://127.0.0.1:5500/JDBRSTORE/Vistas/index.html";
+        const baseURLAdmmin = "IndexAdmin.html";
+        const baseURLGuest = "IndexGuest.html";
+        const baseURLUser = "IndexUser.html";
 
         const credentials = 
             { 
@@ -63,11 +65,26 @@ saveButton.addEventListener('click', () => {
             credentials: JSON.stringify(credentials)
         };
 
-        const fullURL = `${baseURL}?${new URLSearchParams(params)}`;
+        const fullURLA = `${baseURLAdmmin}?${new URLSearchParams(params)}`;
+        const fullURLG = `${baseURLGuest}?${new URLSearchParams(params)}`;
+        const fullURLU = `${baseURLUser}?${new URLSearchParams(params)}`;
 
-        console.log(fullURL);
-        window.open(fullURL)
-      
+
+        if (Rol == ROLES.ADMIN) {
+            console.log(fullURLA);
+            window.open(fullURLA);
+        } else if (Rol == ROLES.GUEST) {
+            console.log(fullURLG);
+            window.open(fullURLG);
+        } else if (Rol == ROLES.USER) {
+            console.log(fullURLU);
+            window.open(fullURLU);
+        } else {
+            console.log("Rol desconocido");
+        }
+        
+
+        
     } else {
         alert('User or password incorret');
     }

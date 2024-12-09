@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Producto</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <h3 id="name"><a href="index.html">JDBRStoreADMIN</a></h3>
+
+        <ul id="mylist">
+            <a href="Foms.html">
+                <input id="CrateElemet" type="button" value="Create element" />
+             </a>
+
+            <li><a href="Contact.html">Contact</a></li>
+            <li><a href="Products.html">Products</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="Products.html">Sign up</a></li>
+        </ul>
+    </nav>
+    <div class="form-container">
+        <h1>Formulario de Producto</h1>
+        <form action="#" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
+
+            <div class="form-group">
+                <label for="precio">Precio:</label>
+                <input type="number" id="precio" name="precio" required step="0.01">
+            </div>
+
+            <div class="form-group">
+                <label for="cantidad">Cantidad:</label>
+                <input type="number" id="cantidad" name="cantidad" required>
+            </div>
+
+            <div class="form-group">
+                <label for="categoria">Categoría:</label>
+                <select id="categoria" name="categoria" required>
+                    <option value="electronica">Electrónica</option>
+                    <option value="ropa">Ropa</option>
+                    <option value="alimentos">Alimentos</option>
+                    <option value="hogar">Hogar</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="descuento">Descuento (%):</label>
+                <input type="number" id="descuento" name="descuento" required step="0.1" max="100">
+            </div>
+
+            <div class="form-group">
+                <label for="imagen">Imagen del Producto:</label>
+                <input type="file" id="imagen" name="imagen" accept="image/*" required>
+            </div>
+
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+</body>
+</html>
