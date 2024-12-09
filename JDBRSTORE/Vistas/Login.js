@@ -1,20 +1,30 @@
+let ROLES = {
+    ADMIN: 'admin',
+    USER: 'user',
+    GUEST: 'guest'
+};
+
 let Credencailes = [
     {
         username: "JDBR00",
         firstname: "Juan",
-        password: "0"
+        password: "0",
+        Rol: ROLES.ADMIN
     },
     {
         username: "Angel",
         firstname: "A",
-        password: "1"
+        password: "1",
+        Rol: ROLES.USER
+
     },
     {
         username: "Taylor",
         firstname: "L",
-        password: "2"
-    }
+        password: "2",
+        Rol: ROLES.GUEST
 
+    }
 ];
 
 
@@ -35,6 +45,8 @@ saveButton.addEventListener('click', () => {
         
         const user = Credencailes.find(cred => cred.username === inputValue && cred.password === inputValues);
         const firstname = user ? user.firstname : "";
+        const Rol = user ? user.Rol : "";
+
 
         const baseURL = "http://127.0.0.1:5500/JDBRSTORE/Vistas/index.html";
 
@@ -42,7 +54,8 @@ saveButton.addEventListener('click', () => {
             { 
                 username: inputValue,
                 firstname: firstname,
-                password: inputValues 
+                password: inputValues,
+                Rol: Rol
             };
 
 
@@ -54,8 +67,6 @@ saveButton.addEventListener('click', () => {
 
         console.log(fullURL);
         window.open(fullURL)
-
-
       
     } else {
         alert('User or password incorret');
