@@ -78,7 +78,6 @@ if (credentialsParam) {
     const nav = document.querySelector('nav');
     const golDiv = document.getElementById('gol');
 
-    // Insertar el mensaje de bienvenida entre el nav y el div "gol"
     nav.insertAdjacentElement('afterend', welcomeElement);
     
 }
