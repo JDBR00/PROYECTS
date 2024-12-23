@@ -1,63 +1,89 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const golDiv = document.getElementById('gol');
 
+    let productos = JSON.parse(localStorage.getItem('productos')) || [];
 
-function cargarProductos() {
-    const contenedorProductos = document.getElementById("gol"); 
+    function renderProducts() {
+     
+        productos.forEach(producto => {
+            const productDiv = document.createElement('div');
+            productDiv.className = 'product';
 
-    productos.forEach(producto => {
-        const productDiv = document.createElement('div');
-        productDiv.className='product'; 
+            const img = document.createElement('img');
+            img.src = producto.imagen;
+            img.alt = producto.nombre;
 
-        const img = document.createElement('img');
-        img.src = producto.imagen;
-        img.alt = producto.nombre;
+            const productInfoDiv = document.createElement('div');
+            productInfoDiv.className = "product-info";
 
-        const productInfoDiv = document.createElement('div');
-        productInfoDiv.className = "product-info";
-        
-        const name = document.createElement('h4');
-        name.textContent = producto.nombre;
-        
-        const price = document.createElement('h5');
-        price.textContent = `Price: $${producto.precio}`;
+            const name = document.createElement('h4');
+            name.textContent = producto.nombre;
 
-        const desc = document.createElement('h5');
-        desc.textContent = `Descuento: $${producto.descuento}`;
+            const price = document.createElement('h5');
+            price.textContent = `Price: $${producto.precio}`;
 
-        if(producto.descuento > 0){
-            desc.style.color = "green";
-        }else{
-            desc.style.color = "red";
-        }
+            const desc = document.createElement('h5');
+            desc.textContent = `Descuento: $${producto.descuento}`;
 
-        const pf = document.createElement('h5');
-        var pfo = producto.precio - (producto.precio * producto.descuento / 100);
-        pf.textContent = `Precio final: $${pfo}`;
-        
-        const units = document.createElement('h5');
-        units.textContent = `Units: ${producto.cantidad}`;
+            if (producto.descuento > 0) {
+                desc.style.color = "green";
+            } else {
+                desc.style.color = "red";
+            }
 
-        const addButton = document.createElement('button');
-        addButton.textContent = "Add to cart";
-        addButton.onclick = function() {
-            producto.cantidad = producto.cantidad - 1;
+            const pf = document.createElement('h5');
+            var pfo = producto.precio - (producto.precio * producto.descuento / 100);
+            pf.textContent = `Precio final: $${pfo}`;
+
+            const units = document.createElement('h5');
             units.textContent = `Units: ${producto.cantidad}`;
-        };
 
-        productInfoDiv.appendChild(name);
-        productInfoDiv.appendChild(price);
-        productInfoDiv.appendChild(units);
-        productInfoDiv.appendChild(desc);
-        productInfoDiv.appendChild(pf);
-        productInfoDiv.appendChild(addButton);
+            const addButton = document.createElement('button');
+            addButton.textContent = "Add to cart";
+            addButton.onclick = function () {
+                if (producto.cantidad > 0) {
+                    producto.cantidad = producto.cantidad - 1;
+                    units.textContent = `Units: ${producto.cantidad}`;
+                    if (producto.cantidad === 0) {
+                        addButton.disabled = true;
+                        addButton.textContent = "Out of stock";
+                    }
+                    localStorage.setItem('productos', JSON.stringify(productos));
+                }
+            };
 
-        productDiv.appendChild(img);
-        productDiv.appendChild(productInfoDiv);
-        contenedorProductos.appendChild(productDiv);
+           
 
-    });
-}
+            productInfoDiv.appendChild(name);
+            productInfoDiv.appendChild(price);
+            productInfoDiv.appendChild(desc);
+            productInfoDiv.appendChild(pf);
+            productInfoDiv.appendChild(units);
+            productInfoDiv.appendChild(addButton);
 
-window.onload = cargarProductos;
+            productDiv.appendChild(img);
+            productDiv.appendChild(productInfoDiv);
+
+            golDiv.appendChild(productDiv);
+        });
+    }
+
+    renderProducts();
+});
+
+
+const deleteAllButton = document.getElementById('deleteAllButton');
+
+deleteAllButton.addEventListener('click', () => {
+    if (confirm("¿Estás seguro de que deseas eliminar todos los productos?")) {
+        localStorage.removeItem('productos');
+
+        localStorage.setItem('productos', JSON.stringify(productos));
+
+        alert("Todos los productos han sido eliminados y reiniciados.");
+        window.location.reload(); 
+    }
+});
 
 
 function getURLParameter(firstname) {

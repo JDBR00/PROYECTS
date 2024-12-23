@@ -7,7 +7,6 @@ const inputImage = document.getElementById('imagen');
 const saveButtonForms = document.getElementById('ButtomForms');
 
 saveButtonForms.addEventListener('click', (e) => {
-
     e.preventDefault();
     const inputNameValue = inputName.value.trim();
     const inputPriceValue = parseFloat(inputPrice.value.trim());
@@ -16,7 +15,7 @@ saveButtonForms.addEventListener('click', (e) => {
     const inputDiscountValue = parseFloat(inputDiscount.value.trim());
     const inputImageValue = inputImage.value.trim();
 
-    if (!inputNameValue || isNaN(inputPriceValue) || isNaN(inputAmountValue) || 
+    if (!inputNameValue || isNaN(inputPriceValue) || isNaN(inputAmountValue) ||
         !inputCategoryValue || isNaN(inputDiscountValue) || !inputImageValue) {
         alert("Por favor, completa todos los campos correctamente.");
         return;
@@ -31,15 +30,10 @@ saveButtonForms.addEventListener('click', (e) => {
         imagen: inputImageValue
     };
 
+    let productos = JSON.parse(localStorage.getItem('productos')) || [];
     productos.push(NewProduct);
+    localStorage.setItem('productos', JSON.stringify(productos));
 
-    console.log(productos);
-
-    const baseURLAdmin = "IndexAdmin.html";
-    const params = { NewProduct: JSON.stringify(NewProduct) };
-    const fullURLA = `${baseURLAdmin}?${new URLSearchParams(params)}`;
-
-    window.open(baseURLAdmin);
     alert("Producto agregado exitosamente.");
-
+    window.location.href = "IndexAdmin.html";
 });

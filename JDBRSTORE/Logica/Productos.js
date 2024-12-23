@@ -32,3 +32,19 @@ let productos = [
         imagen:"https://static.dafiti.com.co/p/converse-2367-9310091-1-zoom.jpg" 
     },
 ];
+
+if (!localStorage.getItem('productos')) {
+    localStorage.setItem('productos', JSON.stringify(productos));
+} else {
+
+    let productosExistentes = JSON.parse(localStorage.getItem('productos'));
+    let productosUnicos = [...productosExistentes];
+
+    productos.forEach(producto => {
+        if (!productosExistentes.some(p => p.nombre === producto.nombre)) {
+            productosUnicos.push(producto);
+        }
+    });
+
+    localStorage.setItem('productos', JSON.stringify(productosUnicos));
+}
