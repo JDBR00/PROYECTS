@@ -115,7 +115,6 @@ if (credentialsParam) {
     console.log("paso 7");
 
 } else {
-    // Si no hay credenciales en la URL, recuperamos el firstname desde localStorage
     const firstname = localStorage.getItem('firstname');
     if (firstname) {
         const welcomeElement = document.getElementById('holap');
