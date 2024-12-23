@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const golDiv = document.getElementById('gol');
 
     let productos = JSON.parse(localStorage.getItem('productos')) || [];
-
+    console.log("paso 1");
     function renderProducts() {
      
         productos.forEach(producto => {
@@ -52,7 +52,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             };
 
-           
+            console.log("paso 2");
+
 
             productInfoDiv.appendChild(name);
             productInfoDiv.appendChild(price);
@@ -67,12 +68,14 @@ document.addEventListener('DOMContentLoaded', () => {
             golDiv.appendChild(productDiv);
         });
     }
+    console.log("paso 3");
 
     renderProducts();
 });
 
 
 const deleteAllButton = document.getElementById('deleteAllButton');
+console.log("paso 4");
 
 deleteAllButton.addEventListener('click', () => {
     if (confirm("¿Estás seguro de que deseas eliminar todos los productos?")) {
@@ -84,12 +87,14 @@ deleteAllButton.addEventListener('click', () => {
         window.location.reload(); 
     }
 });
+console.log("paso 5");
 
 
 function getURLParameter(firstname) {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get(firstname);
 }
+console.log("paso 6");
 
 const credentialsParam = getURLParameter('credentials');
 
@@ -98,6 +103,8 @@ if (credentialsParam) {
     const credentials = JSON.parse(credentialsParam);
     const firstname = credentials.firstname;
 
+    localStorage.setItem('firstname', firstname);
+
     const welcomeElement = document.getElementById('holap');
     welcomeMensaje = ('Welcomme ' + firstname)
     welcomeElement.innerText = welcomeMensaje;
@@ -105,7 +112,21 @@ if (credentialsParam) {
     const golDiv = document.getElementById('gol');
 
     nav.insertAdjacentElement('afterend', welcomeElement);
-    
+    console.log("paso 7");
+
+} else {
+    // Si no hay credenciales en la URL, recuperamos el firstname desde localStorage
+    const firstname = localStorage.getItem('firstname');
+    if (firstname) {
+        const welcomeElement = document.getElementById('holap');
+        welcomeMensaje = ('Welcome ' + firstname);
+        welcomeElement.innerText = welcomeMensaje;
+        const nav = document.querySelector('nav');
+        const golDiv = document.getElementById('gol');
+
+        nav.insertAdjacentElement('afterend', welcomeElement);
+    }
 }
 
+console.log("paso 7");
 
