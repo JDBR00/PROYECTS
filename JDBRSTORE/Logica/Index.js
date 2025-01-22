@@ -1,53 +1,16 @@
-
-
-function getURLParameter(firstname) {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get(firstname);
-}
-
-
-const credentialsParam = getURLParameter('credentials');
-console.log("paso 1");
-
-if (credentialsParam) {
-    const credentials = JSON.parse(credentialsParam);
-    const firstname = credentials.firstname;
-
-    localStorage.setItem('firstname', firstname);
-
-    const welcomeElement = document.getElementById('holap');
-    welcomeMensaje = ('Welcomme ' + firstname)
-    welcomeElement.innerText = welcomeMensaje;
-    const nav = document.querySelector('nav');
-    const golDiv = document.getElementById('gol');
-
-    nav.insertAdjacentElement('afterend', welcomeElement);
-    console.log("paso 2");
-
-} else {
-    const firstname = localStorage.getItem('firstname');
-    if (firstname) {
-        const welcomeElement = document.getElementById('holap');
-        welcomeMensaje = ('Welcome ' + firstname);
-        welcomeElement.innerText = welcomeMensaje;
-        const nav = document.querySelector('nav');
-        const golDiv = document.getElementById('gol');
-
-        nav.insertAdjacentElement('afterend', welcomeElement);
-        
-    }
-}
-
-
-
-
 document.addEventListener('DOMContentLoaded', () => {
-    const golDiv = document.getElementById('gol');
+    
+    const golDiv = document.createElement('div');
+
+    golDiv.id = "gol";
+    document.body.appendChild(golDiv);
 
     let productos = JSON.parse(localStorage.getItem('productos')) || [];
     console.log("paso 3");
+
+
     function renderProducts() {
-     
+        golDiv.innerHTML = '';
         productos.forEach(producto => {
             const productDiv = document.createElement('div');
             productDiv.className = 'product';
@@ -55,6 +18,29 @@ document.addEventListener('DOMContentLoaded', () => {
             const img = document.createElement('img');
             img.src = producto.imagen;
             img.alt = producto.nombre;
+
+            const OverMenuInfo = document.createElement('div');
+            OverMenuInfo.className = "menu-container";
+
+            
+            const MenuBottom = document.createElement('button');
+            MenuBottom.textContent = "⋮";
+            MenuBottom.className = "menu-button";
+
+            const MenuBottomOpcions = document.createElement('ul');
+            MenuBottomOpcions.className = "menu-options";
+
+            
+
+            MenuBottom.addEventListener('click', () => {
+            MenuBottomOpcions.style.display = MenuBottomOpcions.style.display === 'block' ? 'none' : 'block';
+            });
+
+            document.addEventListener('click', (event) => {
+            if (!MenuBottom.contains(event.target) && !MenuBottomOpcions.contains(event.target)) {
+                MenuBottomOpcions.style.display = 'none';
+            }
+            });
 
             const productInfoDiv = document.createElement('div');
             productInfoDiv.className = "product-info";
@@ -96,19 +82,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             };
             
+
             
-
-
             productInfoDiv.appendChild(name);
             productInfoDiv.appendChild(price);
             productInfoDiv.appendChild(desc);
             productInfoDiv.appendChild(pf);
             productInfoDiv.appendChild(units);
             productInfoDiv.appendChild(addButton);
+            
+            
+            productDiv.appendChild(OverMenuInfo);
+            OverMenuInfo.appendChild(MenuBottom);
 
             productDiv.appendChild(img);
             productDiv.appendChild(productInfoDiv);
-
+            
             golDiv.appendChild(productDiv);
             
         });
@@ -119,9 +108,3 @@ document.addEventListener('DOMContentLoaded', () => {
     renderProducts();
     console.log("paso 5");
 });
-
-
-
-
-
-
