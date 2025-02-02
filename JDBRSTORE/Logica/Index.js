@@ -1,4 +1,67 @@
 document.addEventListener('DOMContentLoaded', () => {
+    
+    
+
+    function Navbar() {
+        const Nav = document.createElement('nav');
+
+        const NameAdmin = document.createElement('h3')
+        NameAdmin.id = "name";
+
+        const LinkNameAdmin = document.createElement('a');
+        LinkNameAdmin.href = "index.html";
+        LinkNameAdmin.textContent = "JDBRStoreADMIN";
+
+        const UlNav = document.createElement('ul');
+        UlNav.id = "mylist";
+
+        const CreateNav = document.createElement('a');
+        CreateNav.href = "Foms.html";
+        
+        const CreateNavInput = document.createElement('input');
+        CreateNavInput.type = "button";
+        CreateNavInput.value = "Create";
+        CreateNavInput.id = "CrateElemet";
+
+        const ListNavContacLi = document.createElement('li');
+        const ListNavContacA = document.createElement('a');
+        ListNavContacA.href = "Contact.html";
+        ListNavContacA.textContent = "Contact";
+
+        
+        const ListNavProductsLi = document.createElement('li');
+        const ListNavProductsA = document.createElement('a');
+        ListNavProductsA.href = "Products.html";
+        ListNavProductsA.textContent = "Products";
+
+        const ListNavLoginLi = document.createElement('li');
+        const ListNavLoginA = document.createElement('a');
+        ListNavLoginA.href = "Products.html";
+        ListNavLoginA.textContent = "Login";
+
+        
+        const ListNavSingUpLi = document.createElement('li');
+        const ListNavSingUpA = document.createElement('a');
+        ListNavSingUpA.href = "Products.html";
+        ListNavSingUpA.textContent = "SingUp";
+
+        document.body.appendChild(Nav);
+        Nav.appendChild(NameAdmin);
+        NameAdmin.appendChild(LinkNameAdmin);
+        Nav.appendChild(UlNav);
+        UlNav.appendChild(CreateNav);
+        CreateNav.appendChild(CreateNavInput);
+        UlNav.appendChild(ListNavContacLi);
+        ListNavContacLi.appendChild(ListNavContacA);
+        UlNav.appendChild(ListNavProductsLi);
+        ListNavProductsLi.appendChild(ListNavProductsA);
+        UlNav.appendChild(ListNavLoginLi);
+        ListNavLoginLi.appendChild(ListNavLoginA);
+        UlNav.appendChild(ListNavSingUpLi);
+        ListNavSingUpLi.appendChild(ListNavSingUpA);
+        
+
+    }
 
     function renderProducts() {
         const golDiv = document.createElement('div');
@@ -144,7 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log("paso 4");
     }
 
-
+    Navbar();
     renderProducts();
     console.log("paso 5");
 });
