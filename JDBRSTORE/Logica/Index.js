@@ -1,8 +1,50 @@
 document.addEventListener('DOMContentLoaded', () => {
+    function ValidUser() {
+        function getURLParameter(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+    
+        const credentialsParam = getURLParameter('credentials');
+        
+        if (!credentialsParam) {
+            console.error("No se encontró el parámetro 'credentials' en la URL.");
+            return "guest";  
+        }
+    
+        let credentials;
+        try {
+            credentials = JSON.parse(credentialsParam);
+        } catch (error) {
+            console.error("Error al parsear 'credentials':", error);
+            return "guest";  
+        }
+    
+        if (!credentials || !credentials.Rol) {
+            console.error("Las credenciales no contienen un rol válido.");
+            return "guest"; 
+        }
+    
+        const rol = credentials.Rol.toLowerCase(); 
+    
+        if (rol === "admin") {
+            console.log("admin");
+            return "admin";
+        } else if (rol === "user") {
+            console.log("user");
+            return "user";
+        } else {
+            console.log("guest");
+            return "guest";
+        }
+    }
     
     
 
     function Navbar() {
+
+        const RolUsuario = ValidUser();
+
         const Nav = document.createElement('nav');
 
         const NameAdmin = document.createElement('h3')
@@ -15,13 +57,24 @@ document.addEventListener('DOMContentLoaded', () => {
         const UlNav = document.createElement('ul');
         UlNav.id = "mylist";
 
-        const CreateNav = document.createElement('a');
-        CreateNav.href = "Foms.html";
-        
-        const CreateNavInput = document.createElement('input');
-        CreateNavInput.type = "button";
-        CreateNavInput.value = "Create";
-        CreateNavInput.id = "CrateElemet";
+        document.body.appendChild(Nav);
+        Nav.appendChild(NameAdmin);
+        NameAdmin.appendChild(LinkNameAdmin);
+        Nav.appendChild(UlNav);
+
+        if (RolUsuario === "admin") {
+            const CreateNav = document.createElement('a');
+            CreateNav.href = "Foms.html";
+
+            const CreateNavInput = document.createElement('input');
+            CreateNavInput.type = "button";
+            CreateNavInput.value = "Create";
+            CreateNavInput.id = "CrateElemet";
+
+            CreateNav.appendChild(CreateNavInput);
+            UlNav.appendChild(CreateNav);
+        }
+
 
         const ListNavContacLi = document.createElement('li');
         const ListNavContacA = document.createElement('a');
@@ -45,12 +98,10 @@ document.addEventListener('DOMContentLoaded', () => {
         ListNavSingUpA.href = "Products.html";
         ListNavSingUpA.textContent = "SingUp";
 
-        document.body.appendChild(Nav);
-        Nav.appendChild(NameAdmin);
-        NameAdmin.appendChild(LinkNameAdmin);
-        Nav.appendChild(UlNav);
-        UlNav.appendChild(CreateNav);
-        CreateNav.appendChild(CreateNavInput);
+      
+
+  
+     
         UlNav.appendChild(ListNavContacLi);
         ListNavContacLi.appendChild(ListNavContacA);
         UlNav.appendChild(ListNavProductsLi);
@@ -62,6 +113,14 @@ document.addEventListener('DOMContentLoaded', () => {
         
 
     }
+
+    function WelcomeMenssaje() { 
+        const WelcomeH4 = document.createElement('h4');
+        WelcomeH4.id = "WecomeH4";
+
+        document.body.appendChild(WelcomeH4);
+    }
+    
 
     function renderProducts() {
         const golDiv = document.createElement('div');
@@ -81,6 +140,8 @@ document.addEventListener('DOMContentLoaded', () => {
             img.src = producto.imagen;
             img.alt = producto.nombre;
 
+
+            
             const OverMenuInfo = document.createElement('div');
             OverMenuInfo.className = "menu-container";
 
@@ -207,7 +268,9 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log("paso 4");
     }
 
+    ValidUser();
     Navbar();
+    WelcomeMenssaje();
     renderProducts();
     console.log("paso 5");
 });

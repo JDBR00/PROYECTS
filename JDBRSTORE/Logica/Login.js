@@ -70,11 +70,11 @@ saveButton.addEventListener('click', () => {
             console.log(fullURLA);
             window.open(fullURLA);
         } else if (Rol == ROLES.GUEST) {
-            console.log(fullURLG);
-            window.open(fullURLG);
+            console.log(fullURLA);
+            window.open(fullURLA);
         } else if (Rol == ROLES.USER) {
-            console.log(fullURLU);
-            window.open(fullURLU);
+            console.log(fullURLA);
+            window.open(fullURLA);
         } else {
             console.log("Rol desconocido");
         }
@@ -87,7 +87,3 @@ saveButton.addEventListener('click', () => {
     console.log('Dato guardado:', inputValues);
 });
 
-function getURLParameter(firstname) {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get(firstname);
-}
