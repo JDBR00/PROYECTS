@@ -87,16 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ListNavProductsA.href = "Products.html";
         ListNavProductsA.textContent = "Products";
 
-        const ListNavLoginLi = document.createElement('li');
-        const ListNavLoginA = document.createElement('a');
-        ListNavLoginA.href = "Products.html";
-        ListNavLoginA.textContent = "Login";
 
-        
-        const ListNavSingUpLi = document.createElement('li');
-        const ListNavSingUpA = document.createElement('a');
-        ListNavSingUpA.href = "Products.html";
-        ListNavSingUpA.textContent = "SingUp";
 
       
 
@@ -106,10 +97,33 @@ document.addEventListener('DOMContentLoaded', () => {
         ListNavContacLi.appendChild(ListNavContacA);
         UlNav.appendChild(ListNavProductsLi);
         ListNavProductsLi.appendChild(ListNavProductsA);
-        UlNav.appendChild(ListNavLoginLi);
-        ListNavLoginLi.appendChild(ListNavLoginA);
-        UlNav.appendChild(ListNavSingUpLi);
-        ListNavSingUpLi.appendChild(ListNavSingUpA);
+        if(RolUsuario !== "guest"){
+            const ListUserLi = document.createElement('li');
+            const ListUserA = document.createElement('a');
+            ListUserA.href = "User.html";
+            ListUserA.textContent = "My User";
+            UlNav.appendChild(ListUserLi);
+            ListUserLi.appendChild(ListUserA);
+            
+
+        }else{
+            const ListNavLoginLi = document.createElement('li');
+            const ListNavLoginA = document.createElement('a');
+            ListNavLoginA.href = "Products.html";
+            ListNavLoginA.textContent = "Login";
+    
+            
+            const ListNavSingUpLi = document.createElement('li');
+            const ListNavSingUpA = document.createElement('a');
+            ListNavSingUpA.href = "Products.html";
+            ListNavSingUpA.textContent = "SingUp";
+
+            UlNav.appendChild(ListNavLoginLi);
+            ListNavLoginLi.appendChild(ListNavLoginA);
+            UlNav.appendChild(ListNavSingUpLi);
+            ListNavSingUpLi.appendChild(ListNavSingUpA);
+
+        }
         
 
     }
@@ -157,6 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const editOption = document.createElement('li');
             editOption.textContent = "Editar";
             editOption.id = "editOpcion";
+            
 
             editOption.addEventListener('click', () => {
                 const newName = prompt("Edita el nombre del producto:", producto.nombre);
@@ -250,14 +265,26 @@ document.addEventListener('DOMContentLoaded', () => {
             productInfoDiv.appendChild(units);
             productInfoDiv.appendChild(addButton);
             
-            
-            productDiv.appendChild(OverMenuInfo);
-            MenuBottomOpcions.appendChild(editOption);
-            MenuBottomOpcions.appendChild(deleteOption);
-            MenuBottomOpcions.appendChild(SelectionBottom);     
-            OverMenuInfo.appendChild(MenuBottomOpcions);
+            const RolUsuario = ValidUser();
 
-            OverMenuInfo.appendChild(MenuBottom);
+            if (RolUsuario === "admin"){
+                productDiv.appendChild(OverMenuInfo);
+                MenuBottomOpcions.appendChild(editOption);
+                MenuBottomOpcions.appendChild(deleteOption);
+                MenuBottomOpcions.appendChild(SelectionBottom);     
+                OverMenuInfo.appendChild(MenuBottomOpcions);
+    
+                OverMenuInfo.appendChild(MenuBottom);
+            } else{
+                productDiv.appendChild(OverMenuInfo);
+                MenuBottomOpcions.appendChild(SelectionBottom);
+                OverMenuInfo.appendChild(MenuBottomOpcions);
+                OverMenuInfo.appendChild(MenuBottom);
+         
+            }
+
+            
+
 
             productDiv.appendChild(img);
             productDiv.appendChild(productInfoDiv);
